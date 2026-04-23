@@ -17,13 +17,9 @@ if (!cached) {
 }
 
 export const connect = async () => {
-  if (cached.conn) return { conn: cached.conn, isFallback: false };
+  if (cached.conn) return cached.conn;
 
-  // Fallback in dev if URI is missing
   if (!MONGO_URI) {
-    if (process.env.NODE_ENV === 'development') {
-      return { conn: null, isFallback: true };
-    }
     throw new Error("MONGO_URI is not defined");
   }
 
@@ -37,13 +33,9 @@ export const connect = async () => {
     }
 
     cached.conn = await cached.promise;
-    return { conn: cached.conn, isFallback: false };
+    return cached.conn;
   } catch (error) {
-    cached.promise = null; // Clear promise to allow retry
-    if (process.env.NODE_ENV === 'development') {
-      console.warn("MongoDB connection failed, falling back to local file storage.");
-      return { conn: null, isFallback: true };
-    }
+    cached.promise = null;
     throw error;
   }
 };

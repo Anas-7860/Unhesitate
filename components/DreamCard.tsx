@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 type Props = {
   title: string;
@@ -21,11 +22,33 @@ export default function DreamCard({
   userImage,
   imageUrl,
 }: Props) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const toggleFlip = () => setIsFlipped((prev) => !prev);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleFlip();
+    }
+  };
+
   return (
-    <div className="group relative w-full max-w-sm h-64 perspective">
+    <div
+      className="group relative w-full max-w-sm h-64 perspective cursor-pointer"
+      role="button"
+      tabIndex={0}
+      aria-pressed={isFlipped}
+      onClick={toggleFlip}
+      onKeyDown={handleKeyDown}
+    >
       
       {/* Card Container */}
-      <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:rotate-x-180">
+      <div
+        className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
+          isFlipped ? "rotate-x-180" : "md:group-hover:rotate-x-180"
+        }`}
+      >
 
         {/* Front Side */}
         <div className="absolute inset-0 rounded-2xl bg-zinc-900 flex items-center justify-center backface-hidden border border-zinc-700 shadow-lg overflow-hidden">

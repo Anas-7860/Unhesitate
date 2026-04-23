@@ -3,7 +3,6 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { connect } from "@/lib/mongodb";
 import Dream from "@/lib/models/dream.model";
-import { localDb } from "@/lib/local-db";
 
 export async function createDream(input: {
   title: string;
@@ -28,7 +27,7 @@ export async function createDream(input: {
       throw new Error("Unauthorized - Cannot retrieve user information");
     }
 
-    const { isFallback } = await connect();
+    await connect();
 
     const dreamData = {
       clerkUserId: user.id,
@@ -42,11 +41,6 @@ export async function createDream(input: {
       ...input,
     };
 
-    if (isFallback) {
-      const dream = await localDb.create(dreamData);
-      return JSON.parse(JSON.stringify(dream));
-    }
-
     const dream = await Dream.create(dreamData);
     return JSON.parse(JSON.stringify(dream));
   } catch (error) {
@@ -56,12 +50,7 @@ export async function createDream(input: {
 }
 
 export async function getMyDreams() {
-  const { isFallback } = await connect();
-
-  if (isFallback) {
-    const dreams = await localDb.find({ type: "dream" });
-    return JSON.parse(JSON.stringify(dreams));
-  }
+  await connect();
 
   return await Dream.find({ type: "dream" })
     .sort({ createdAt: -1 })
@@ -69,12 +58,7 @@ export async function getMyDreams() {
 }
 
 export async function getNightmares() {
-  const { isFallback } = await connect();
-
-  if (isFallback) {
-    const dreams = await localDb.find({ type: "nightmare" });
-    return JSON.parse(JSON.stringify(dreams));
-  }
+  await connect();
 
   return await Dream.find({ type: "nightmare" })
     .sort({ createdAt: -1 }).lean()
@@ -84,12 +68,7 @@ export async function deleteDream(id: string) {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
 
-  const { isFallback } = await connect();
-
-  if (isFallback) {
-    await localDb.deleteOne({ _id: id, clerkUserId: userId });
-    return;
-  }
+  await connect();
 
   await Dream.deleteOne({ _id: id, clerkUserId: userId });
 }

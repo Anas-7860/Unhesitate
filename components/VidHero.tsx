@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 const videos = [
   "/videos/dream1.mp4",
-  // "/videos/dream2.mp4",
   "/videos/dream3.mp4",
   "/videos/dream4.mp4",
   "/videos/dream5.mp4",
@@ -18,16 +19,14 @@ const VidHero = () => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % videos.length);
     }, 8000);
+
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="mt-2 sm:mt-4 flex justify-center w-full min-h-screen bg-black z-0 relative px-2 sm:px-4 overflow-x-hidden">
-      {/* Container aligned with Navbar */}
-      <div className="flex flex-col md:flex-row w-full max-w-7xl lg:w-5/6 min-h-[85vh] gap-4 sm:gap-6 overflow-hidden">
-        
-        {/* Left: Video Card */}
-        <div className="relative w-full md:w-2/3 h-60 sm:h-80 md:h-[90vh] rounded-2xl overflow-hidden shadow-2xl z-0">
+    <section className="mt-2 sm:mt-4 flex justify-center w-full bg-black relative px-2 sm:px-4 pb-6 sm:pb-8 overflow-x-hidden">
+      <div className="flex flex-col md:flex-row w-full max-w-7xl lg:w-5/6 gap-4 sm:gap-6 overflow-hidden">
+        <div className="relative w-full md:w-2/3 h-[44vh] min-h-[260px] sm:h-[52vh] md:h-[90vh] rounded-2xl overflow-hidden shadow-2xl">
           {videos.map((video, index) => (
             <video
               key={index}
@@ -41,54 +40,46 @@ const VidHero = () => {
               }`}
             />
           ))}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
         </div>
 
-        {/* Right: Login Card */}
-        <div className="flex items-center justify-center w-full h-auto md:h-[90vh] md:w-1/3">
-          <div className="w-full max-w-full bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 text-white shadow-[0_0_30px_rgba(255,255,255,0.2)] border border-white/20 flex flex-col items-center justify-center md:h-[80vh] overflow-hidden">
-            
-            {/* Open Source Project Heading */}
-            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase tracking-widest text-blue-400 mb-2 text-center break-words max-w-full">
+        <div className="flex items-start md:items-center justify-center w-full h-auto md:h-[90vh] md:w-1/3">
+          <div className="w-full bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 text-white shadow-[0_0_30px_rgba(255,255,255,0.2)] border border-white/20 flex flex-col items-center justify-center md:h-[80vh] overflow-hidden">
+            <h2 className="text-xs sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl uppercase tracking-[0.22em] sm:tracking-widest text-blue-400 mb-2 text-center">
               Open Source Project
             </h2>
 
-            {/* Main Title */}
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-center break-words max-w-full">
+            <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-center leading-tight">
               Share Your Dream
             </h1>
 
-            {/* Quote */}
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-5 italic text-center px-2 break-words max-w-full">
-              "A dream is not something you see in your sleep, it’s something that
-              keeps you awake."
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-5 italic text-center px-1 sm:px-2">
+              "A dream is not something you see in your sleep, it is something that keeps you awake."
             </p>
 
             <Image
               src="/images/logintab.png"
               alt="Login Tab"
-              className="mb-4 sm:mb-6 md:mb-8 w-32 sm:w-40 md:w-48 lg:w-52 h-auto max-w-full"
+              className="mb-4 sm:mb-6 md:mb-8 w-28 sm:w-40 md:w-48 lg:w-52 h-auto max-w-full"
               height={80}
               width={200}
             />
 
-            {/* Share Button */}
-            <Link href="/create">
-            <button className="relative overflow-hidden bg-blue-500 text-white px-4 sm:px-5 py-2 md:px-6 md:py-3 rounded-full font-semibold transition duration-500 transform hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] group text-sm sm:text-base">
-              <span className="relative z-10">Share</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></span>
-            </button>
-            </Link>
-            {/* GitHub Button */}
-         
-            <div className="mt-4 sm:mt-5 md:mt-6 w-full flex justify-center">
+            <div className="mt-2 sm:mt-4 w-full flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link href="/create" className="w-full sm:w-auto">
+                <button className="relative w-full sm:w-auto overflow-hidden bg-blue-500 text-white px-4 sm:px-5 py-2.5 md:px-6 md:py-3 rounded-full font-semibold transition duration-500 transform active:scale-[0.98] sm:hover:scale-110 sm:hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] group text-sm sm:text-base">
+                  <span className="relative z-10">Share</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] sm:group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
+                </button>
+              </Link>
+
               <a
                 href="https://github.com/Anas-7860/unhesitate.git"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-block px-4 sm:px-5 py-2 md:px-6 md:py-3 rounded-full bg-gray-800 border border-gray-700 text-white font-semibold transition duration-500 overflow-hidden hover:scale-110 hover:rotate-1 hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] text-sm sm:text-base"
+                className="group relative inline-flex w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-gray-800 border border-gray-700 text-white font-semibold transition duration-500 overflow-hidden active:scale-[0.98] sm:hover:scale-110 sm:hover:rotate-1 sm:hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] text-sm sm:text-base"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  {/* GitHub Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -99,7 +90,7 @@ const VidHero = () => {
                   </svg>
                   GitHub Repo
                 </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] sm:group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
               </a>
             </div>
           </div>
