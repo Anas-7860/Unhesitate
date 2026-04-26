@@ -22,7 +22,7 @@ const Navlist = ({ mobile = false, onClickLink }: NavlistProps) => {
         <Link
           key={item.label}
           href={item.href}
-          className={`text-white hover:text-amber-400 transition cursor-pointer text-sm lg:text-base whitespace-nowrap ${
+          className={`text-foreground hover:text-amber-500 transition cursor-pointer text-sm lg:text-base whitespace-nowrap ${
             pathname === item.href ? "font-semibold text-amber-400" : ""
           }`}
           onClick={onClickLink}

@@ -24,7 +24,7 @@ const VidHero = () => {
   }, []);
 
   return (
-    <section className="mt-2 sm:mt-4 flex justify-center w-full bg-black relative px-2 sm:px-4 pb-6 sm:pb-8 overflow-x-hidden">
+    <section className="mt-2 sm:mt-4 flex justify-center w-full bg-background relative px-2 sm:px-4 pb-6 sm:pb-8 overflow-x-hidden">
       <div className="flex flex-col md:flex-row w-full max-w-7xl lg:w-5/6 gap-4 sm:gap-6 overflow-hidden">
         <div className="relative w-full md:w-2/3 h-[44vh] min-h-[260px] sm:h-[52vh] md:h-[90vh] rounded-2xl overflow-hidden shadow-2xl">
           {videos.map((video, index) => (

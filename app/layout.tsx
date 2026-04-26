@@ -33,12 +33,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${orbitron.variable} ${exo2.variable}`}>
-      <body className="antialiased bg-black text-white overflow-x-hidden">
+    <html lang="en" className={`${orbitron.variable} ${exo2.variable} dark`} suppressHydrationWarning>
+      <body className="antialiased overflow-x-hidden">
         <ClerkProvider appearance={{
           elements: {
             formButtonPrimary: 
-              "bg-black text-white hover:bg-gray-800 rounded-full px-6 py-2",
+              "bg-primary text-primary-foreground hover:opacity-90 rounded-full px-6 py-2",
             card: "shadow-xl rounded-2xl",
             headerTitle: "text-2xl font-bold text-gray-900",
           },

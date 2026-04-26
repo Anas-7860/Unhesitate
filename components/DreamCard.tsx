@@ -51,7 +51,7 @@ export default function DreamCard({
       >
 
         {/* Front Side */}
-        <div className="absolute inset-0 rounded-2xl bg-zinc-900 flex items-center justify-center backface-hidden border border-zinc-700 shadow-lg overflow-hidden">
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-50/95 via-white to-indigo-50/95 dark:bg-none dark:from-transparent dark:via-transparent dark:to-transparent dark:bg-zinc-900 flex items-center justify-center backface-hidden border border-sky-200/70 dark:border-zinc-700 shadow-[0_10px_26px_rgba(56,189,248,0.14)] dark:shadow-lg overflow-hidden">
           {imageUrl ? (
             <img 
               src={imageUrl} 
@@ -70,20 +70,20 @@ export default function DreamCard({
 
           {/* Bottom Left Overlay Pill */}
           <div className="absolute bottom-3 left-3 right-3 flex items-center pointer-events-none">
-            <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md p-2 rounded-xl border border-white/10 max-w-full overflow-hidden">
+            <div className="flex items-center gap-2 bg-gradient-to-r from-sky-50/95 to-indigo-50/90 dark:bg-none dark:from-transparent dark:to-transparent dark:bg-black/60 backdrop-blur-md p-2 rounded-xl border border-sky-200/80 dark:border-white/10 max-w-full overflow-hidden shadow-sm">
               <Image
                   src={userImage}
                   alt={username}
                   width={28}
                   height={28}
-                  className="rounded-full border border-zinc-600 flex-shrink-0"
+                  className="rounded-full border border-slate-300 dark:border-zinc-600 flex-shrink-0"
                 />
                 <div className="flex flex-col min-w-0">
-                  <p className="text-[11px] font-bold text-white truncate leading-tight">
+                  <p className="text-[11px] font-bold text-slate-800 dark:text-white truncate leading-tight">
                     {title}
                   </p>
                   {location && (
-                    <p className="text-[9px] text-zinc-300 truncate leading-tight">
+                    <p className="text-[9px] text-slate-500 dark:text-zinc-300 truncate leading-tight">
                       📍 {location}
                     </p>
                   )}
@@ -93,18 +93,18 @@ export default function DreamCard({
         </div>
 
         {/* Back Side */}
-        <div className="absolute inset-0 rounded-2xl bg-zinc-900 p-5 rotate-x-180 backface-hidden border border-zinc-700 shadow-lg flex flex-col justify-between">
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sky-50/95 via-white to-indigo-50/95 dark:bg-none dark:from-transparent dark:via-transparent dark:to-transparent dark:bg-zinc-900 p-5 rotate-x-180 backface-hidden border border-sky-200/70 dark:border-zinc-700 shadow-[0_10px_26px_rgba(56,189,248,0.14)] dark:shadow-lg flex flex-col justify-between">
 
           {/* Top Content */}
           <div>
-            <p className="text-lg font-semibold text-white">{title}</p>
+            <p className="text-lg font-semibold text-slate-800 dark:text-white">{title}</p>
 
-            <p className="mt-2 text-sm text-zinc-400 leading-snug line-clamp-3">
+            <p className="mt-2 text-sm text-slate-600 dark:text-zinc-400 leading-snug line-clamp-3">
               {description}
             </p>
 
             {location && (
-              <div className="mt-2 text-xs text-zinc-500">
+              <div className="mt-2 text-xs text-slate-500 dark:text-zinc-500">
                 📍 {location}
               </div>
             )}
@@ -120,9 +120,9 @@ export default function DreamCard({
                 alt={username}
                 width={26}
                 height={26}
-                className="rounded-full border border-zinc-600"
+                className="rounded-full border border-slate-300 dark:border-zinc-600"
               />
-              <span className="text-xs text-zinc-300">
+              <span className="text-xs text-slate-600 dark:text-zinc-300">
                 {username}
               </span>
             </div>
