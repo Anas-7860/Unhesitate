@@ -49,13 +49,29 @@ Still basic / in progress:
 
 ## Tech Stack
 
-- **Frontend**: Next.js 15 (App Router), React 19, TypeScript
-- **Styling**: Tailwind CSS 4, class-variance-authority, clsx
-- **Authentication**: Clerk
-- **Database**: MongoDB + Mongoose
-- **Fonts**: Google Fonts (Orbitron, Exo 2)
-- **UI Libraries**: Radix UI, Lucide React, React Icons
-- **Utilities**: styled-components, tailwind-merge, tailwind-variants
+### Frontend & Framework
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
+
+### Styling & UI
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![Radix UI](https://img.shields.io/badge/Radix%20UI-Latest-161615?style=flat-square&logo=radix-ui&logoColor=white)
+![Styled Components](https://img.shields.io/badge/Styled%20Components-Latest-DB7093?style=flat-square&logo=styled-components&logoColor=white)
+
+### Authentication & Backend
+![Clerk](https://img.shields.io/badge/Clerk-Auth-6C63FF?style=flat-square&logo=clerk)
+![MongoDB](https://img.shields.io/badge/MongoDB-7.2-13AA52?style=flat-square&logo=mongodb&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-8.7-880000?style=flat-square&logo=mongoose&logoColor=white)
+
+### Icons & Utilities
+![Lucide React](https://img.shields.io/badge/Lucide%20React-Latest-F56565?style=flat-square)
+![React Icons](https://img.shields.io/badge/React%20Icons-Latest-D09D3A?style=flat-square)
+![Google Fonts](https://img.shields.io/badge/Google%20Fonts-Orbitron%20%7C%20Exo%202-4285F4?style=flat-square&logo=google-fonts&logoColor=white)
+
+### Package & Build Tools
+![npm](https://img.shields.io/badge/npm-Latest-CB3837?style=flat-square&logo=npm&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?style=flat-square&logo=eslint&logoColor=white)
 
 ## Local Setup
 
