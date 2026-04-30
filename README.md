@@ -15,9 +15,9 @@ Most journaling apps focus only on daily tasks and productivity. Unhesitate focu
 
 ## Current Status (MVP)
 
-Implemented now:
+-Implemented now:
 
-- **Next.js 15** App Router with TypeScript and Turbopack
+- **Next.js 16** App Router with TypeScript (updated for modern `next/image` patterns)
 - **Clerk authentication** with global middleware and authorization
 - **MongoDB + Mongoose** persistence with data validation
 - **Dream/Nightmare management**:
@@ -50,7 +50,7 @@ Still basic / in progress:
 ## Tech Stack
 
 ### Frontend & Framework
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
@@ -83,15 +83,20 @@ npm install
 
 ### 2. Create environment variables
 
-Create a .env.local file in project root:
+Create a `.env.local` file in the project root or use environment variables provided by your host.
+
+For safety, do NOT commit secret keys to the repo. Add a `.env.example` to the repository with placeholders only:
 
 ```env
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-CLERK_SECRET_KEY=your_clerk_secret_key
-MONGO_URI=your_mongodb_connection_string
+# .env.example (commit this)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_or_pk_test_PLACEHOLDER
+CLERK_SECRET_KEY=sk_live_or_sk_test_PLACEHOLDER
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.example.mongodb.net/<dbname>
 ```
 
-Important: the current code reads MONGO_URI (not MONGODB_URI).
+When running locally, create `.env.local` (this file should be gitignored) and paste real keys there.
+
+Important: the current code reads `MONGO_URI` (not `MONGODB_URI`). If you accidentally exposed keys (for example in a public repo), rotate them immediately.
 
 ### 3. Run development server
 
@@ -315,9 +320,9 @@ Motivation cards feature multiple color themes:
 - **Form Reset**: Cleared inputs after successful submission
 - **Loading States**: Visual feedback during submission
 
-### Performance Optimizations
-- **Turbopack**: Faster dev builds and HMR
-- **Image Optimization**: Next.js Image component with lazy loading
+- ### Performance Optimizations
+- **Turbopack**: Faster dev builds and HMR (opt-in/experimental in some Next versions)
+- **Image Optimization**: Next.js `Image` component — updated to modern patterns (use `priority` for LCP/hero images, or `fill` with a fixed wrapper and `sizes`). Avoid legacy props like `objectFit` which were removed in newer Next versions.
 - **Lean Queries**: MongoDB `.lean()` for faster read operations
 - **CSS-in-JS**: Styled-components for scoped, dynamic styles
 
