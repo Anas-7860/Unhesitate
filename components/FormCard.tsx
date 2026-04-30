@@ -6,7 +6,15 @@ const Card = () => {
   return (
     <StyledWrapper>
       <div className="card">
-        <Image src="/images/ani-card.jpg" alt="Dream Image"objectFit="cover" height={300} width={300} />
+        <div className="card-image">
+          <Image
+            src="/images/ani-card.jpg"
+            alt="Dream Image"
+            fill
+            sizes="300px"
+            className="object-cover"
+          />
+        </div>
         <p className="heading">
           CAPTURE YOUR <span className='text-sky-400 italic'>"DREAMS"</span> , CONFRONT YOUR <span className='text-red-600 italic'>"NIGHTMARES"</span>
         </p>
@@ -36,6 +44,12 @@ const StyledWrapper = styled.div`
     gap: 12px;
     border-radius: 8px;
     cursor: pointer;
+  }
+
+  .card-image {
+    position: relative;
+    width: 300px;
+    height: 300px;
   }
 
   .card::before {

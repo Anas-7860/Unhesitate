@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX } from "react-icons/fi";
-import {SignedIn, SignInButton, SignedOut, UserButton} from "@clerk/nextjs";
+import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import { createPortal } from "react-dom";
 import ThemeToggle from "./ThemeToggle";
 
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const { isSignedIn } = useAuth();
 
   useEffect(() => {
     setMounted(true);
@@ -44,17 +45,17 @@ const Navbar = () => {
         <div className="flex gap-3 lg:gap-6 p-2 sm:p-3 px-3 sm:px-4 rounded-[50px] bg-gradient-to-r from-sky-50/95 to-indigo-50/90 dark:bg-none dark:from-transparent dark:to-transparent dark:bg-black border border-sky-200/80 dark:border-black hidden md:flex items-center">
           <Navlist />
           <ThemeToggle />
-          <SignedOut>
+          {!isSignedIn && (
       <SignInButton>
           <button className="rounded-lg font-bold shadow bg-blue-700 text-white hover:bg-blue-900 transition h-7 w-16 text-sm">
                 Login
             </button>
       </SignInButton>
-    </SignedOut>
+    )}
      
-     <SignedIn>
+     {isSignedIn && (
      <UserButton/>
-      </SignedIn>
+      )}
         </div>
        
 
@@ -84,19 +85,19 @@ const Navbar = () => {
       <div className="mt-4">
         <ThemeToggle />
       </div>
-      <SignedOut>
+      {!isSignedIn && (
         <SignInButton>
            <button className="mt-4 rounded-lg font-bold shadow bg-blue-700 text-white hover:bg-blue-900 transition h-7 w-16 text-sm">
                   Login
               </button>
         </SignInButton>
-      </SignedOut>
+      )}
        
-      <SignedIn>
+      {isSignedIn && (
       <div className="mt-4 pt-2 border-t border-slate-200 dark:border-white/15 w-full flex justify-start">
       <UserButton/>
       </div>
-       </SignedIn>
+       )}
 
     </div>
   </>,
