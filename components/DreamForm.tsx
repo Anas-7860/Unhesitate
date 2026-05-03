@@ -132,20 +132,15 @@ const DreamForm = () => {
       </label>
 
       {/* Description */}
-
-      {/* Dream Description */}
-      <label className="relative block flex-1">
+      <label className="block flex-1">
         <textarea
           required
           rows={3}
-          className="peer w-full min-h-[80px] rounded-lg border border-gray-600 bg-gray-700 px-3 pt-5 pb-2 text-sm sm:text-base text-white placeholder-transparent focus:border-sky-400 focus:outline-none resize-none"
+          className="w-full min-h-[80px] rounded-lg border border-gray-600 bg-gray-700 px-3 py-3 text-sm sm:text-base text-white placeholder:text-gray-400 focus:border-sky-400 focus:outline-none resize-none"
           placeholder="Dream Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <span className="absolute left-3 top-2 text-xs sm:text-sm text-gray-400 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs sm:peer-focus:text-sm peer-focus:text-sky-400">
-          Dream Description
-        </span>
       </label>
 
       {/* Submit button */}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Orbitron, Exo_2 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import {ClerkProvider} from "@clerk/nextjs";
 
 const orbitron = Orbitron({
@@ -34,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${orbitron.variable} ${exo2.variable} dark`} suppressHydrationWarning>
-      <body className="antialiased overflow-x-hidden">
+      <body className="antialiased overflow-x-hidden min-h-screen bg-background text-foreground">
         <ClerkProvider appearance={{
           elements: {
             formButtonPrimary: 
@@ -43,8 +44,13 @@ export default function RootLayout({
             headerTitle: "text-2xl font-bold text-gray-900",
           },
         }}>
-           <Navbar />
-           {children}
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ClerkProvider>
        
       </body>
