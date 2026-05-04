@@ -53,7 +53,7 @@ const VidHero = () => {
               Share Your Dream
             </h1>
 
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-5 italic text-center px-1 sm:px-2">
+            <p className="text-gray-800 dark:text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-5 italic text-center px-1 sm:px-2">
               "A dream is not something you see in your sleep, it is something that keeps you awake."
             </p>
 
